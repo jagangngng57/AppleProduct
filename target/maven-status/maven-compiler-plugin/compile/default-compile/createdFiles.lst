@@ -1,0 +1,5 @@
+com\apple\newsroom\App.class
+com\apple\newsroom\utils\DriverUtility.class
+com\apple\newsroom\pages\actions\SearchPageAction.class
+com\apple\newsroom\pages\locators\SearchPage.class
+com\apple\newsroom\utils\DriverFactory.class

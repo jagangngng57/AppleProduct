@@ -1,0 +1,4 @@
+com\apple\newsroom\runner\TestRunnerPostComment.class
+com\apple\newsroom\steps\SearchPageSteps.class
+com\apple\newsroom\config\AppTest.class
+com\apple\newsroom\config\FrameworkConfig.class
