@@ -14,7 +14,7 @@ Feature: newsroom search and popular topic Feature with US Landing Page
   Scenario Outline: 
     Given user navigates to the newsRoom application
     Then user able to see the newsroom home page '<pageTitle>'
-    And user should see the links '<newsroomLink>'
+    And user should see the newsroom links '<newsroomLink>'
     When user clicks on '<newsroomLink>'
     Then user should see text header '<latestNews>'
 
@@ -28,32 +28,32 @@ Feature: newsroom search and popular topic Feature with US Landing Page
     Then user able to see the newsroom home page '<pageTitle>'
     And user should see the link '<popularTopics>'
     When user able to clicks on '<popularTopics>'
-    Then user should see the list of topics
+    Then user should see '<airPods>' in the list of topics
 
     Examples: 
-      | pageTitle        | popularTopics  |
-      | Newsroom - Apple | Popular Topics |
+      | pageTitle        | popularTopics  | airPods |
+      | Newsroom - Apple | Popular Topics | AirPods |
 
   @SearchResults
   Scenario Outline: 
     Given user navigates to the newsRoom application
     Then user able to see the newsroom home page '<pageTitle>'
-    And user should see the links '<newsroom>'
+    And user should see the search links '<newsroom>'
     When user enter the '<topic>' in search box
-    Then user should see the search results
+    Then user should see the search results with page '<title>'
 
     Examples: 
-      | pageTitle        | newsroom        | topic |
-      | Newsroom - Apple | Search Newsroom | apple |
+      | pageTitle        | newsroom        | topic   | title                       |
+      | Newsroom - Apple | Search Newsroom | MacBook | MacBook - Newsroom - Search |
 
   @ViewArchive
   Scenario Outline: 
     Given user navigates to the newsRoom application
     Then user able to see the newsroom home page '<pageTitle>'
-    And user should see the links '<newsroom>' and '<viewArchive>'
-    When user clicks on '<viewArchive>'
-    Then user navigates to the archive results
+    And user should see the viewArchive '<viewArchive>'
+    When user clicks on viewArchive '<viewArchive>'
+    Then user navigates to the archive page results with '<title>'
 
     Examples: 
-      | pageTitle        | newsroom        | viewArchive  |
-      | Newsroom - Apple | Search Newsroom | View Archive |
+      | pageTitle        | newsroom        | viewArchive  |title|
+      | Newsroom - Apple | Search Newsroom | View Archive |All Topics Archive - Apple|

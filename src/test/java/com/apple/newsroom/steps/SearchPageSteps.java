@@ -11,7 +11,6 @@ import com.apple.newsroom.config.FrameworkConfig;
 import com.apple.newsroom.pages.locators.SearchPage;
 import com.apple.newsroom.utils.DriverFactory;
 
-import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -42,7 +41,6 @@ public class SearchPageSteps {
 
 	}
 
-	@After
 	public void tearDown() {
 
 		if (driver != null) {
@@ -74,6 +72,56 @@ public class SearchPageSteps {
 
 	}
 
+	@Then("user should see the viewArchive {string}")
+	public void user_should_see_the_view_archive(String viewArchiveLink) {
+		if (viewArchiveLink.equals(searchPage.viewArchiveLink())) {
+			assertEquals(searchPage.viewArchiveLink(), viewArchiveLink);
+		}
+	}
+
+	@Then("user should see the search links {string}")
+	public void user_should_see_the_search_links(String searchRoom) {
+		if (searchRoom.equals(searchPage.searchNewsroomText())) {
+			assertEquals(searchPage.searchNewsroomText(), searchRoom);
+		}
+	}
+
+	@When("user enter the {string} in search box")
+	public void user_enter_the_in_search_box(String name) throws InterruptedException {
+
+		searchPage.searchNewsRoomTextField(name);
+
+	}
+
+	@Then("user should see the search results with page {string}")
+	public void user_should_see_the_search_results_with_page(String title) {
+		String pageTitle = driver.getTitle();
+
+		assertEquals(pageTitle, title);
+	}
+
+	@Then("user should see the link {string}")
+	public void user_should_see_the_link(String popularTopics) {
+
+		if (popularTopics.equals(searchPage.popularTopicsText())) {
+			assertEquals(searchPage.popularTopicsText(), popularTopics);
+		}
+	}
+
+	@When("user able to clicks on {string}")
+	public void user_able_to_clicks_on(String popularTopicLink) {
+		if (popularTopicLink.equals(searchPage.popularTopicsText())) {
+			searchPage.popularTopicsLink();
+		}
+	}
+
+	@Then("user should see {string} in the list of topics")
+	public void user_should_see_in_the_list_of_topics(String airPodLink) {
+		if (airPodLink.equals(searchPage.popularTopicsText())) {
+			assertEquals(searchPage.airPodsLinkText(), airPodLink);
+		}
+	}
+
 	@Then("user should see the links {string} and {string}")
 	public void user_should_see_the_links_and(String newsRoom, String popularTopics) {
 
@@ -87,7 +135,20 @@ public class SearchPageSteps {
 
 	}
 
-	@Then("user should see the links {string}")
+	@When("user clicks on viewArchive {string}")
+	public void user_clicks_on_view_archive(String string) {
+
+		searchPage.viewArchiveLinkClick();
+	}
+
+	@Then("user navigates to the archive page results with {string}")
+	public void user_navigates_to_the_archive_page_results_with(String title) {
+		String pageTitle = driver.getTitle();
+
+		assertEquals(pageTitle, title);
+	}
+
+	@Then("user should see the newsroom links {string}")
 	public void newsRoomLinkVerification(String newsRoomLink) {
 
 		assertEquals(searchPage.newsroomLinkText(), newsRoomLink);
@@ -96,7 +157,7 @@ public class SearchPageSteps {
 	@When("user clicks on {string}")
 	public void user_clicks_on(String newsroomLink) {
 		if (newsroomLink.equals(searchPage.newsroomLinkText())) {
-			searchPage.newsroomLink();
+			searchPage.searchNewsroomText();
 		}
 
 	}

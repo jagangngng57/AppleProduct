@@ -1,5 +1,6 @@
 package com.apple.newsroom.pages.locators;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -36,6 +37,8 @@ public class SearchPage {
 
 	@FindBy(xpath = "//input[@name='q']")
 	private WebElement searchNewRoomTextField;
+	@FindBy(xpath = "//h3[contains(text(),'All-new MacBook Air with M2 available to order sta')]")
+	private WebElement searchResultOption;
 
 	@FindBy(xpath = "//a[contains(text(),'View Archive')]")
 	private WebElement viewArchiveLink;
@@ -43,8 +46,30 @@ public class SearchPage {
 	@FindBy(xpath = "//h2[contains(text(),'Latest News')]")
 	private WebElement latestNewsHeader;
 
-	public void searchNewsRoomTextField(String name) {
+	@FindBy(xpath = "//*[text()='AirPods']//ancestor::span/parent::*//*[(contains(@class,'ac-gn-link-text'))]")
+	private WebElement airPodsLink;
+
+	public String airPodsLinkText() {
+
+		return airPodsLink.getText();
+	}
+
+	public void viewArchiveLinkClick() {
+		viewArchiveLink.click();
+	}
+
+	public String viewArchiveLink() {
+
+		return airPodsLink.getText();
+	}
+
+	public void searchNewsRoomTextField(String name) throws InterruptedException {
+
+		searchNewRoomTextField.clear();
 		searchNewRoomTextField.sendKeys(name);
+		Thread.sleep(2000);
+		searchNewRoomTextField.sendKeys(Keys.ENTER);
+
 	}
 
 	public String searchNewsroomText() {
@@ -69,6 +94,11 @@ public class SearchPage {
 
 	public String popularTopicsText() {
 		return popularTopics.getText();
+	}
+
+	public void popularTopicsLink() {
+
+		popularTopics.click();
 	}
 
 }
