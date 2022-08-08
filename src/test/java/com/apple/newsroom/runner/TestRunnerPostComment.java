@@ -8,7 +8,7 @@ import io.cucumber.junit.CucumberOptions;
 /**
  * @description: This class acts as an interlink between cucumber feature files
  *               and step definition classes
- * @author Hindu
+ * @author Gyangi Jagadeesh
  * @version 1.0
  * @since 28/12/2018
  */

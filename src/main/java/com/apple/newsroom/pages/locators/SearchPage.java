@@ -7,8 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 /**
- * @description: Page Object class for Branch page
- * @author Hindu
+ * @description: Page Object class for SearchPage page
+ * @author Gyangi Jagadeesh
  * @version 1.0
  * @since 19/06/2022
  */
@@ -37,6 +37,7 @@ public class SearchPage {
 
 	@FindBy(xpath = "//input[@name='q']")
 	private WebElement searchNewRoomTextField;
+
 	@FindBy(xpath = "//h3[contains(text(),'All-new MacBook Air with M2 available to order sta')]")
 	private WebElement searchResultOption;
 
@@ -65,7 +66,6 @@ public class SearchPage {
 
 	public void searchNewsRoomTextField(String name) throws InterruptedException {
 
-		searchNewRoomTextField.clear();
 		searchNewRoomTextField.sendKeys(name);
 		Thread.sleep(2000);
 		searchNewRoomTextField.sendKeys(Keys.ENTER);

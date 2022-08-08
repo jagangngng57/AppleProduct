@@ -5,12 +5,16 @@ import static org.junit.Assert.assertEquals;
 import java.util.concurrent.TimeUnit;
 
 import org.aeonbits.owner.ConfigFactory;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import com.apple.newsroom.config.FrameworkConfig;
 import com.apple.newsroom.pages.locators.SearchPage;
 import com.apple.newsroom.utils.DriverFactory;
 
+import cucumber.api.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -22,12 +26,18 @@ public class SearchPageSteps {
 
 	public SearchPage searchPage;
 
+	@FindBy(xpath = "//input[@class='nr-sf-input']")
+	private WebElement searchNewRoomTextField;
+
+	@FindBy(xpath = "//input[@placeholder='Search Newsroom']")
+	private WebElement placeHolder;
+
 	/**
 	 * @description: setUp() method to set up initial state for all test methods and
 	 *               tearDown() method perform cleanup after execution.
 	 * @param None
 	 * @return None
-	 * @author Hindu
+	 * @author Gyangi Jagadeesh
 	 * @version 1.0
 	 */
 
@@ -41,6 +51,7 @@ public class SearchPageSteps {
 
 	}
 
+	@After
 	public void tearDown() {
 
 		if (driver != null) {
@@ -89,7 +100,8 @@ public class SearchPageSteps {
 	@When("user enter the {string} in search box")
 	public void user_enter_the_in_search_box(String name) throws InterruptedException {
 
-		searchPage.searchNewsRoomTextField(name);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("document.getElementById('q').value='Macbook'");
 
 	}
 
