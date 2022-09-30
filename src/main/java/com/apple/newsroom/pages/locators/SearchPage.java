@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
  * @description: Page Object class for SearchPage page
  * @author Gyangi Jagadeesh
  * @version 1.0
- * @since 19/06/2022
+ * @since 19/10/2022
  */
 
 public class SearchPage {
